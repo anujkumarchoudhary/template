@@ -1,0 +1,216 @@
+{
+  "menu": [
+    {
+      "name": "Services",
+      "link": "#",
+      "subMenu": [
+        {
+          "name": "Digital Marketing",
+          "link": "/digital-marketing-services",
+          "menuItem": [
+            {
+              "name": "SEO Services",
+              "link": "/search-engine-optimization"
+            },
+            {
+              "name": "Local SEO",
+              "link": "/local-seo-company"
+            },
+            {
+              "name": "GMB/GBP SEO",
+              "link": "/google-my-business-optimization"
+            },
+            {
+              "name": "SaaS SEO",
+              "link": "/saas-seo-agency"
+            },
+            {
+              "name": "eCommerce SEO",
+              "link": "/ecommerce-seo-agency"
+            },
+            {
+              "name": "Link Building Services",
+              "link": "/link-building-agency"
+            },
+            {
+              "name": "Social Media Management",
+              "link": "/social-media-management"
+            },
+            {
+              "name": "White Label Services",
+              "link": "/white-label-digital-marketing-agency"
+            }
+          ]
+        },
+        {
+          "name": "Industries",
+          "link": "/industries",
+          "menuItem": [
+            {
+              "name": "Real Estate SEO",
+              "link": "#"
+            },
+            {
+              "name": "Healthcare SEO",
+              "link": "#"
+            },
+            {
+              "name": "Legal SEO",
+              "link": "/law-firm-seo"
+            },
+            {
+              "name": "Ecommerce SEO",
+              "link": "#"
+            },
+            {
+              "name": "SaaS SEO",
+              "link": "/#"
+            },
+            {
+              "name": "HVAC SEO",
+              "link": "#"
+            },
+            {
+              "name": "Dental SEO",
+              "link": "#"
+            },
+            {
+              "name": "Plumbing SEO",
+              "link": "#"
+            },
+            {
+              "name": "Roofing SEO",
+              "link": "#"
+            },
+            {
+              "name": "View All",
+              "link": "#"
+            }
+          ]
+        },
+        {
+          "name": "Staff Augmentation",
+          "link": "/it-staff-augmentation-services",
+          "menuItem": [
+            {
+              "name": "Hire SEO Experts",
+              "link": "/hire-seo-expert"
+            },
+            {
+              "name": "Hire Social Media Marketers",
+              "link": "/hire-social-media-marketers"
+            },
+            {
+              "name": "Hire Graphic Designers",
+              "link": "/hire-graphic-designers"
+            },
+            {
+              "name": "Hire UI/UX Designers",
+              "link": "/hire-ui-ux-designers"
+            },
+            {
+              "name": "Hire Web Developers",
+              "link": "/hire-web-developers"
+            },
+            {
+              "name": "Hire Mobile App Developers",
+              "link": "/hire-mobile-app-developers"
+            },
+            {
+              "name": "Hire AI Developers",
+              "link": "/hire-ai-developers"
+            }
+          ]
+        },
+        {
+          "name": "Web Development",
+          "link": "/web-development-services",
+          "menuItem": [
+            {
+              "name": "AI/ML Development",
+              "link": "/ai-ml-development-services"
+            },
+            {
+              "name": "React Development",
+              "link": "/reactjs-development-company"
+            },
+            {
+              "name": "Laravel Development",
+              "link": "/laravel-development-company"
+            },
+            {
+              "name": "PHP Development",
+              "link": "/php-development-company"
+            },
+            {
+              "name": "Node Js Development",
+              "link": "#"
+            },
+            {
+              "name": "Vue Js Development",
+              "link": "#"
+            },
+            {
+              "name": "Python Development",
+              "link": "#"
+            },
+            {
+              "name": "Wordpress Development",
+              "link": "/wordpress-development-company"
+            },
+            {
+              "name": "Shopify Development",
+              "link": "/shopify-development-company"
+            },
+            {
+              "name": "eCommerce Development",
+              "link": "/ecommerce-development-company"
+            }
+          ]
+        },
+        {
+          "name": "App Development ",
+          "link": "/mobile-app-development-company",
+          "menuItem": [
+            {
+              "name": "iOS Development",
+              "link": "/ios-app-development-company"
+            },
+            {
+              "name": "Android Development",
+              "link": "/android-app-development-company"
+            },
+            {
+              "name": "Cross-Platform",
+              "link": "/cross-platform-app-development"
+            },
+            {
+              "name": "Wearables",
+              "link": "/wearables-app-development"
+            },
+            {
+              "name": "Flutter Development",
+              "link": "#"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "About Us",
+      "link": "/about-us"
+    },
+    {
+      "name": "Portfolio",
+      "link": "#"
+    },
+    {
+      "name": "Blog",
+      "link": "/blog"
+    },
+    {
+      "name": "Contact Us",
+      "link": "/contact"
+    }
+  ]
+}

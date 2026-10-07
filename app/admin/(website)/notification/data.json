@@ -1,0 +1,52 @@
+{
+  "feedback": [
+    {
+      "file": "app/admin/%28website%29/notification/page.tsx",
+      "line": 4,
+      "name": "Importing Heading Component",
+      "message": "Importing Heading component from '@/app/components/common/Heading' to use it in the notification page."
+    },
+    {
+      "file": "app/admin/%28website%29/notification/page.tsx",
+      "line": 6,
+      "name": "Using Heading Component",
+      "message": "Using the Heading component to display the title 'Notification' on the page."
+    },
+    {
+      "file": "app/admin/%28website%29/notification/page.tsx",
+      "line": 4,
+      "name": "Importing Heading Component",
+      "message": "Importing Heading component from '@/app/components/common/Heading' to use it in the notification page."
+    },
+    {
+      "file": "app/admin/%28website%29/notification/page.tsx",
+      "line": 6,
+      "name": "Using Heading Component",
+      "message": "Using the Heading component to display the title 'Notification' on the page."
+    },
+    {
+      "file": "app/admin/%28website%29/notification/page.tsx",
+      "line": 4,
+      "name": "Importing Heading Component",
+      "message": "Importing Heading component from '@/app/components/common/Heading' to use it in the notification page."
+    },
+    {
+      "file": "app/admin/%28website%29/notification/page.tsx",
+      "line": 6,
+      "name": "Using Heading Component",
+      "message": "Using the Heading component to display the title 'Notification' on the page."
+    },
+    {
+      "file": "app/admin/%28website%29/notification/page.tsx",
+      "line": 4,
+      "name": "Importing Heading Component",
+      "message": "Importing Heading component from '@/app/components/common/Heading' to use it in the notification page."
+    },
+    {
+      "file": "app/admin/%28website%29/notification/page.tsx",
+      "line": 6,
+      "name": "Using Heading Component",
+      "message": "Using the Heading component to display the title 'Notification' on the page."
+    }
+  ]
+}
