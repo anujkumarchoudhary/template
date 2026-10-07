@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Quill */
+.ql-editor {
+  min-height: 300px;
+}
+
+.ql-editor table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.ql-editor td,
+.ql-editor th {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+}
+
+.ql-editor th {
+  font-weight: 600;
+}
