@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { JSX } from "react";
 import Label from "../../UI/Label";
-import AppImage from "../../AppImage";
+// import AppImage from "../../AppImage";
 import CommonButton from "../CommonButton";
 
 export interface IHeading {
@@ -95,13 +95,7 @@ const Heading = ({
                       border: textColor || "#000000",
                     }}
                   >
-                    <AppImage
-                      name={"star"}
-                      width={18}
-                      height={17}
-                      alt="star"
-                      className="mb-auto"
-                    />
+                    
                     <span
                       className={`my-auto uppercase`}
                       style={{ color: textColor || "#000000" }}
@@ -257,13 +251,7 @@ const Heading = ({
             <div className={`${""}`}>
               <div className="flex gap-8">
                 <div className="flex h-fit mb-4 gap-2">
-                  <AppImage
-                    src={"star"}
-                    width={20}
-                    height={20}
-                    alt="star"
-                    className="mb-auto"
-                  />
+
                   <span
                     className={`my-auto uppercase xl:text-[14px]`}
                     style={{

@@ -11,7 +11,6 @@ import {
     FiTrash2,
 } from "react-icons/fi";
 
-import { BaseURL } from "@/app/baseUrl";
 
 interface BlogRedirectItem {
     _id: string;
@@ -77,7 +76,7 @@ const Page = () => {
             setLoading(true);
 
             const response = await axios.get(
-                `${BaseURL}blog/redirected`
+                `${"BaseURL"}blog/redirected`
             );
 
 console.log(response,"response13123")
@@ -177,7 +176,7 @@ console.log(response,"response13123")
             // -------------------------------------------------
 
             const response = await axios.patch(
-                `${BaseURL}blog/redirect/${encodeURIComponent(
+                `${"BaseURL"}blog/redirect/${encodeURIComponent(
                     newSlug
                 )}`,
                 {
@@ -278,7 +277,7 @@ console.log(response,"response13123")
             // -------------------------------------------------
 
             const response = await axios.patch(
-                `${BaseURL}blog/redirect/${encodeURIComponent(
+                `${"BaseURL"}blog/redirect/${encodeURIComponent(
                     item.slug
                 )}`,
                 {
@@ -372,7 +371,7 @@ console.log(response,"response13123")
             // -------------------------------------------------
 
             const response = await axios.patch(
-                `${BaseURL}blog/update-redirect/${encodeURIComponent(
+                `${"BaseURL"}blog/update-redirect/${encodeURIComponent(
                     item.slug
                 )}`,
                 payload

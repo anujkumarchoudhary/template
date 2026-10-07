@@ -1,0 +1,17 @@
+export type MonthKey =
+    | "Jul 2025" | "Aug 2025" | "Sep 2025" | "Oct 2025" | "Nov 2025"
+    | "Dec 2025" | "Jan 2026" | "Feb 2026" | "Mar 2026" | "Apr 2026" | "May 2026"
+    | "Jun 2026" | "Jul 2026";
+
+export type MonthType = {
+    name: string;
+    searchVolume: number;
+    x: number;
+    bars: number[];
+};
+
+export type GraphSummary = {
+    totalKeywords: number;
+    totalSearchVolume: number;
+    changes: number;
+}

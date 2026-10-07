@@ -2,17 +2,14 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { transformDate } from "@/@core/hooks/transformDate";
-import { BaseURL } from "@/app/baseUrl";
 import axios from "axios";
 import Loading from "@/app/components/Loading";
 import DynamicTable from "@/app/components/table/DynamicTable";
-import { Column, IServiceColumn } from "@/@core/types/table.type";
 
 const Page = () => {
     const router = useRouter();
     const [refresh, setRefresh] = useState(false);
-    const [data, setData] = useState<IServiceColumn[]>([]);
+    const [data, setData] = useState<any>([]);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
@@ -55,7 +52,7 @@ const Page = () => {
     const getServices = async () => {
         try {
             setLoading(true);
-            const res = await axios.get(`${BaseURL}/services`);
+            const res = await axios.get(`${"BaseURL"}/services`);
             console.log(res, "res328423")
 
             if (res?.status === 200) {
@@ -83,7 +80,7 @@ const Page = () => {
         getServices();
     }, [refresh]);
 
-    const columns: Column<IServiceColumn>[] = [
+    const columns: any = [
         {
             key: "title",
             label: "Title",
@@ -102,7 +99,7 @@ const Page = () => {
             {loading ? (
                 <Loading />
             ) : (
-                <DynamicTable<IServiceColumn>
+                <DynamicTable<any>
                     columns={columns}
                     data={filteredData}
                     loading={loading}
@@ -114,7 +111,7 @@ const Page = () => {
                     handleClick={() => router.push("/admin/blog/create")}
                     isAction={true}
                     isEdit={true}
-                    onEdit={(item) => {
+                    onEdit={(item:any) => {
                         router.push(`/admin/service-meta/${item.slug}`);
                     }}
 

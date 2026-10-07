@@ -1,5 +1,4 @@
 import React from "react";
-import AppImage from "../AppImage";
 import Link from "next/link";
 
 const GridiantButton = ({ href }: any) => {
@@ -27,13 +26,7 @@ const GridiantButton = ({ href }: any) => {
 
         {/* Inner Content */}
         <span className="relative z-10 flex items-center gap-4 rounded-full px-6 py-3 bg-black scale-[0.992]">
-          <AppImage
-            name={"helloWhite"}
-            alt="button hand"
-            width={21}
-            height={22}
-            className="aspect-[21/22] w-[clamp(11px,2vw,22px)] h-auto animate-wave"
-          />
+
 
           <p className="uppercase font-[15px] font-medium text-white">
             Let’s Connect

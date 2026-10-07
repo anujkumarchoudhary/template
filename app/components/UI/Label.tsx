@@ -1,4 +1,4 @@
-import AppImage from "../AppImage";
+// import AppImage from "../AppImage";
 export interface ILabel {
   name?: any;
   isBorder?: boolean;
@@ -14,13 +14,7 @@ const Label = ({ name, isBorder }: ILabel) => {
 
       {/* Content */}
       <div className="relative z-10 flex items-center gap-2 px-5 py-0.5 rounded-full bg-white">
-        <AppImage
-          name="star"
-          width={20}
-          height={20}
-          alt="star"
-          className="my-auto animate-pulse"
-        />
+
 
         <p className="font-urbanist uppercase">{name}</p>
       </div>

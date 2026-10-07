@@ -2,17 +2,15 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 
-import { BaseURL } from "@/app/baseUrl";
 
 import axios from "axios";
 import toast from "react-hot-toast";
 
 import QuillEditor from "@/app/components/QuillEditor";
 import DynamicTable from "@/app/components/table/DynamicTable";
-import { Category, Column } from "@/@core/types/table.type";
 
 const Page = () => {
-  const [data, setData] = useState<Category[]>([]);
+  const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [openModal, setOpenModal] = useState(false);
@@ -24,7 +22,7 @@ const Page = () => {
   });
 
   const filteredData = useMemo(() => {
-    return data.filter((item) =>
+    return data.filter((item:any) =>
       item.name?.toLowerCase().includes(search.toLowerCase()),
     );
   }, [data, search]);
@@ -32,7 +30,7 @@ const Page = () => {
   const getCategories = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${BaseURL}/category`);
+      const res = await axios.get(`${"BaseURL"}/category`);
       setData(res?.data?.data || []);
     } catch (error) {
       toast.error("Failed to fetch categories");
@@ -76,7 +74,7 @@ const Page = () => {
       return toast.error("Category name required");
     }
     try {
-      const res = await axios.post(`${BaseURL}/category`, formData);
+      const res = await axios.post(`${"BaseURL"}/category`, formData);
       if (res?.data?.success) {
         toast.success("Category created");
         setOpenModal(false);
@@ -93,7 +91,7 @@ const Page = () => {
 
   const deleteCategory = async (id: string) => {
     try {
-      const res = await axios.delete(`${BaseURL}/category/delete/${id}`);
+      const res = await axios.delete(`${"BaseURL"}/category/delete/${id}`);
       if (res?.data?.success) {
         toast.success("Category deleted");
       }
@@ -102,7 +100,7 @@ const Page = () => {
     }
   };
 
-  const columns: Column<Category>[] = [
+  const columns: any = [
     { key: "name", label: "Category" },
     { key: "description", label: "Description" },
   ];
@@ -122,10 +120,10 @@ const Page = () => {
         isAction
         isEdit
         isDelete
-        onEdit={(item) => {
+        onEdit={(item:any) => {
           setOpenModal(true);
         }}
-        onDelete={(item) => {
+        onDelete={(item:any) => {
           deleteCategory(item._id);
         }}
       />

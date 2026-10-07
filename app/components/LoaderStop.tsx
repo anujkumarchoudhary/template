@@ -1,16 +1,11 @@
-"use client";
+import React from 'react'
 
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/app/redux/store";
-import { setLoading } from "@/app/redux/slice/loader.slice";
+const LoaderStop = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
 
-const LoaderStop = ({ slug }: any) => {
-  const dispatch = useDispatch<AppDispatch>();
-
-  if (slug) {
-    dispatch(setLoading(false));
-  }
-  return null;
-};
-
-export default LoaderStop;
+export default LoaderStop

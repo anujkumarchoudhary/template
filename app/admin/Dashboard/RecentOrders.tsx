@@ -49,8 +49,8 @@ export default function RecentOrders() {
       isAction
       isEdit
       isDelete
-      onEdit={(row) => console.log("Edit", row)}
-      onDelete={(row) => console.log("Delete", row)}
+      onEdit={(row:any) => console.log("Edit", row)}
+      onDelete={(row:any) => console.log("Delete", row)}
     />
   );
 }

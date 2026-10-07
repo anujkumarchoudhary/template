@@ -3,13 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { BaseURL } from "@/app/baseUrl";
 
 import axios from "axios";
 
 import Loading from "@/app/components/Loading";
 import DynamicTable from "@/app/components/table/DynamicTable";
-import { Column, IEnquiryColumn } from "@/@core/types/table.type";
 
 const Page = () => {
   const router = useRouter();
@@ -45,7 +43,7 @@ const Page = () => {
         },
       };
 
-      const res = await axios.get(`${BaseURL}/enquiry`, config);
+      const res = await axios.get(`${"BaseURL"}/enquiry`, config);
       console.log("🚀 ~ file: page.tsx:50 ~ getBlogs ~ res:", res);
       if (res?.status === 200) {
         const blogsArray = Array.isArray(res.data)
@@ -75,7 +73,7 @@ const Page = () => {
           "Content-Type": "multipart/form-data",
         },
       };
-      const res = await axios.delete(`${BaseURL}/blog/delete/${id}`, config);
+      const res = await axios.delete(`${"BaseURL"}/blog/delete/${id}`, config);
 
       if (res?.status === 200) {
         setData((prev: any) => prev.filter((blog: any) => blog._id !== id));
@@ -87,7 +85,7 @@ const Page = () => {
     }
   };
 
-  const columns: Column<any>[] = [
+  const columns: any = [
     { key: "name", label: "Name", width: "3fr" },
     { key: "email", label: "Email", width: "2fr" },
     { key: "phone", label: "Phone", width: "2fr" },
@@ -100,7 +98,7 @@ const Page = () => {
       key: "services",
       label: "Service",
       width: "3fr",
-      render: (item) =>
+      render: (item:any) =>
         item?.services?.length
           ? item.services.map((s: any) => s.name).join(", ")
           : "-",
@@ -111,7 +109,7 @@ const Page = () => {
       {loading ? (
         <Loading />
       ) : (
-        <DynamicTable<IEnquiryColumn>
+        <DynamicTable<any>
           columns={columns}
           data={data}
           loading={loading}
@@ -120,8 +118,8 @@ const Page = () => {
           isAction
           isEdit
           isDelete
-          onEdit={(row) => router.push(`/enquiry/edit/${row._id}`)}
-          onDelete={(row) => deleteBlog(row._id)}
+          onEdit={(row:any) => router.push(`/enquiry/edit/${row._id}`)}
+          onDelete={(row:any) => deleteBlog(row._id)}
           itemsPerPage={10}
           headingText="Enquiries"
           searchPlaceholder="Search..."

@@ -3,13 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { BaseURL } from "@/app/baseUrl";
 
 import axios from "axios";
 
 import Loading from "@/app/components/Loading";
 import DynamicTable from "@/app/components/table/DynamicTable";
-import { Column, IProductColumn } from "@/@core/types/table.type";
 
 const Page = () => {
   const router = useRouter();
@@ -37,7 +35,7 @@ const Page = () => {
   const getBlogs = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${BaseURL}/products`);
+      const res = await axios.get(`${"BaseURL"}/products`);
 
       if (res?.status === 200) {
         const blogsArray = Array.isArray(res.data)
@@ -67,7 +65,7 @@ const Page = () => {
           "Content-Type": "multipart/form-data",
         },
       };
-      const res = await axios.delete(`${BaseURL}/blog/delete/${id}`, config);
+      const res = await axios.delete(`${"BaseURL"}/blog/delete/${id}`, config);
 
       if (res?.status === 200) {
         setData((prev: any) => prev.filter((blog: any) => blog._id !== id));
@@ -79,12 +77,12 @@ const Page = () => {
     }
   };
 
-  const columns: Column<any>[] = [
+  const columns: any = [
     {
       key: "featuredImage",
       label: "Image",
       width: "1fr",
-      render: (item) => (
+      render: (item:any) => (
         <img
           src={item.featuredImage}
           alt={item.name || "featured image"}
@@ -112,13 +110,13 @@ const Page = () => {
       key: "pricePerUnit",
       label: "Price",
       width: "2fr",
-      render: (item) => `$${item.pricePerUnit}`,
+      render: (item:any) => `$${item.pricePerUnit}`,
     },
     {
       key: "pricingType",
       label: "Pricing Type",
       width: "2fr",
-      render: (item) =>
+      render: (item:any) =>
         item.pricingType === "perWord" ? "Per Word" : "Per Unit",
     },
 
@@ -126,7 +124,7 @@ const Page = () => {
       key: "status",
       label: "Status",
       width: "1.5fr",
-      render: (item) => (
+      render: (item:any) => (
         <span
           className={`px-2 py-1 text-xs rounded ${
             item.status === "active"
@@ -145,7 +143,7 @@ const Page = () => {
       {loading ? (
         <Loading />
       ) : (
-        <DynamicTable<IProductColumn>
+        <DynamicTable<any>
           columns={columns}
           data={filteredData}
           loading={loading}
@@ -157,10 +155,10 @@ const Page = () => {
           isAction
           isEdit
           isDelete
-          onEdit={(item) => {
+          onEdit={(item:any) => {
             router.push(`/admin/products/${item.slug}`);
           }}
-          onDelete={(item) => {
+          onDelete={(item:any) => {
             deleteProduct(item._id);
           }}
         />

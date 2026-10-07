@@ -1,12 +1,11 @@
 "use client";
-import { BaseURL } from "@/app/baseUrl";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/components/Loading";
 
 import DynamicTable from "@/app/components/table/DynamicTable";
-import { Column } from "@/@core/types/table.type";
+// import { Column } from "@/@core/types/table.type";
 import { BsThreeDots } from "react-icons/bs";
 
 const Page = () => {
@@ -55,7 +54,7 @@ const Page = () => {
   const getBlogs = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${BaseURL}/services`);
+      const res = await axios.get(`${"BaseURL"}/services`);
 
       if (res?.status === 200) {
         const servicesArray = Array.isArray(res.data)
@@ -86,7 +85,7 @@ const Page = () => {
         },
       };
       const res = await axios.delete(
-        `${BaseURL}/services/delete/${id}`,
+        `${"BaseURL"}/services/delete/${id}`,
         config,
       );
 
@@ -102,12 +101,12 @@ const Page = () => {
     }
   };
 
-  const columns: Column<any>[] = [
+  const columns: any = [
     {
       key: "postTitle",
       label: "Title",
       span: "col-span-11",
-      render: (item) =>
+      render: (item:any) =>
         item?.banner?.headingParts?.map((part: any) => part.text).join(" ") ||
         "N/A",
     },
@@ -121,7 +120,7 @@ const Page = () => {
       key: "actions",
       label: "Actions",
       span: "col-span-1",
-      render: (item) => (
+      render: (item:any) => (
         <>
           <div className="relative">
             <button

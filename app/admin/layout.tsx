@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter,  } from "next/navigation";
 
 import Link from "next/link";
 import AdminAuthGuard from "./AdminAuthGuard";
@@ -23,7 +23,6 @@ import {
 } from "react-icons/md";
 
 import { categoryConfig, menuData, Notifications } from "./data/data";
-import logo from '../../public/vercel.svg'
 
 import Image from "next/image";
 
@@ -35,7 +34,7 @@ export default function AdminLayout({
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = "/";
   const [userData, setUserData] = useState<any>(null);
   const [refresh, setRefresh] = useState(false);
   const [open, setOpen] = useState(false);
@@ -116,7 +115,7 @@ export default function AdminLayout({
           className="flex cursor-pointer gap-6"
         >
           <Image
-            src={logo}
+            src={"/"}
             alt="Logo"
             width={140}
             height={50}
@@ -502,7 +501,8 @@ export default function AdminLayout({
         <main
           className={`bg-slate-50 ${isOpen ? "ml-68" : "ml-24"} w-full h-full transition-all duration-300 p-6`}
         >
-          <AdminAuthGuard>{children}</AdminAuthGuard>
+          {/* <AdminAuthGuard></AdminAuthGuard> */}
+          {children}
         </main>
       </div>
     </div>
