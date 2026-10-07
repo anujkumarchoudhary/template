@@ -300,87 +300,150 @@
 
 import { useEffect, useRef } from "react";
 
-import "quill/dist/quill.snow.css";
-import "quill-better-table/dist/quill-better-table.css";
-
-export default function QuillEditor({
-  value,
-  onChange,
-}: {
+type QuillEditorProps = {
   value?: string;
   onChange?: (value: string) => void;
-}) {
-  const editorRef = useRef<HTMLDivElement>(null);
+  placeholder?: string;
+  className?: string;
+};
+
+export default function QuillEditor({
+  value = "",
+  onChange,
+  placeholder = "Write something...",
+  className = "",
+}: QuillEditorProps) {
+  const editorRef = useRef<HTMLDivElement | null>(null);
   const quillRef = useRef<any>(null);
+  const onChangeRef = useRef(onChange);
+
+  // Keep the latest onChange callback without recreating Quill
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
 
   useEffect(() => {
     let mounted = true;
 
-    const initEditor = async () => {
-      if (!editorRef.current || quillRef.current) return;
+    const initQuill = async () => {
+      if (!editorRef.current || quillRef.current) {
+        return;
+      }
 
-      const QuillModule = await import("quill");
-      const BetterTableModule = await import("quill-better-table");
+      try {
+        // Load Quill only in the browser
+        const [{ default: Quill }, { default: QuillBetterTable }] =
+          await Promise.all([
+            import("quill"),
+            import("quill-better-table"),
+          ]);
 
-      const Quill = QuillModule.default;
-      const QuillBetterTable = BetterTableModule.default;
+        if (!mounted || !editorRef.current) {
+          return;
+        }
 
-      if (!mounted || !editorRef.current) return;
+        // Register Better Table
+        Quill.register(
+          {
+            "modules/better-table": QuillBetterTable,
+          },
+          true
+        );
 
-      Quill.register(
-        {
-          "modules/better-table": QuillBetterTable,
-        },
-        true,
-      );
+        const quill = new Quill(editorRef.current, {
+          theme: "snow",
 
-      const quill = new Quill(editorRef.current, {
-        theme: "snow",
+          placeholder,
 
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ["bold", "italic", "underline", "strike"],
-            [{ color: [] }, { background: [] }],
-            [{ list: "ordered" }, { list: "bullet" }],
-            [{ align: [] }],
-            ["link", "image"],
-            ["clean"],
-          ],
+          modules: {
+            toolbar: [
+              [{ header: [1, 2, 3, false] }],
 
-          "better-table": {
-            operationMenu: {
-              items: {
-                unmergeCells: {
-                  text: "Unmerge cells",
+              ["bold", "italic", "underline", "strike"],
+
+              [{ color: [] }, { background: [] }],
+
+              [{ list: "ordered" }, { list: "bullet" }],
+
+              [{ align: [] }],
+
+              ["blockquote", "code-block"],
+
+              ["link", "image"],
+
+              ["clean"],
+            ],
+
+            "better-table": {
+              operationMenu: {
+                items: {
+                  unmergeCells: {
+                    text: "Unmerge cells",
+                  },
                 },
               },
             },
+
+            keyboard: {
+              bindings: QuillBetterTable.keyboardBindings,
+            },
           },
-        },
-      });
+        });
 
-      if (value) {
-        quill.root.innerHTML = value;
+        // Set initial value
+        if (value) {
+          quill.root.innerHTML = value;
+        }
+
+        // Listen for changes
+        quill.on("text-change", () => {
+          if (onChangeRef.current) {
+            onChangeRef.current(quill.root.innerHTML);
+          }
+        });
+
+        quillRef.current = quill;
+      } catch (error) {
+        console.error("Failed to initialize Quill editor:", error);
       }
-
-      quill.on("text-change", () => {
-        onChange?.(quill.root.innerHTML);
-      });
-
-      quillRef.current = quill;
     };
 
-    initEditor();
+    initQuill();
 
     return () => {
       mounted = false;
-      quillRef.current = null;
+
+      if (quillRef.current) {
+        quillRef.current = null;
+      }
     };
   }, []);
 
+  // Update editor when value changes externally
+  useEffect(() => {
+    const quill = quillRef.current;
+
+    if (!quill) {
+      return;
+    }
+
+    const currentValue = quill.root.innerHTML;
+
+    if (value !== currentValue) {
+      const selection = quill.getSelection();
+
+      quill.root.innerHTML = value || "";
+
+      if (selection) {
+        quill.setSelection(selection);
+      }
+    }
+  }, [value]);
+
   return (
-    <div className="w-full">
+    <div
+      className={`quill-editor-wrapper ${className}`}
+    >
       <div ref={editorRef} />
     </div>
   );
